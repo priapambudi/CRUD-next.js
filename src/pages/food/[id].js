@@ -1,10 +1,11 @@
-import FoodCard from "@/components/FoodCard";
-import BaseLayouts from "@/layouts/BaseLayouts";
 import axios from "axios";
+import FoodDetail from "@/components/FoodDetail";
+import FoodForm from "@/components/FoodForm";
+import BaseLayouts from "@/layouts/BaseLayouts";
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
   const resp = await axios.get(
-    "https://api-bootcamp.do.dibimbing.id/api/v1/foods",
+    `https://api-bootcamp.do.dibimbing.id/api/v1/foods/${context.params.id}`,
     {
       headers: {
         apiKey: "w05KkI9AWhKxzvPFtXotUva-",
@@ -14,21 +15,17 @@ export async function getServerSideProps() {
       },
     }
   );
-  // console.log(resp.data.data);
   const data = resp.data.data;
-  return {
-    props: { foods: data },
-  };
+  return { props: { food: data } };
 }
 
-export default function Home({ foods }) {
+export default function FoodDetailPage({ food }) {
   return (
     <BaseLayouts>
-      <ul className="grid grid-cols-3 gap-4 m-10">
-        {foods.map((food) => (
-          <FoodCard key={food.id} food={food} />
-        ))}
-      </ul>
+      <div>
+        <FoodDetail food={food} />
+        <FoodForm defaultFormData={food} isEdit={true} />
+      </div>
     </BaseLayouts>
   );
 }
