@@ -1,6 +1,7 @@
 import FoodCard from "@/components/FoodCard";
-import BaseLayouts from "@/layouts/BaseLayouts";
+// import BaseLayout from "@/layouts/BaseLayout";
 import axios from "axios";
+import Navbar from "@/components/Navbar";
 
 export async function getServerSideProps() {
   const resp = await axios.get(
@@ -23,12 +24,14 @@ export async function getServerSideProps() {
 
 export default function Home({ foods }) {
   return (
-    <BaseLayouts>
-      <ul className="grid grid-cols-3 gap-4 m-10">
+    <>
+      {/* <BaseLayout className="bg-slate-600" /> */}
+      <Navbar />
+      <ul className="grid items-center grid-cols-3 gap-4 m-10">
         {foods.map((food) => (
           <FoodCard key={food.id} food={food} />
         ))}
       </ul>
-    </BaseLayouts>
+    </>
   );
 }

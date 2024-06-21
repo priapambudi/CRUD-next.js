@@ -1,9 +1,11 @@
 import FoodForm from "@/components/FoodForm";
-import BaseLayouts from "@/layouts/BaseLayouts";
+import Navbar from "@/components/Navbar";
+// import BaseLayout from "@/layouts/BaseLayout";
 export default function CreateFood() {
   return (
-    <BaseLayouts>
+    <>
+      <Navbar />
       <FoodForm />
-    </BaseLayouts>
+    </>
   );
 }

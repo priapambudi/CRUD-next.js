@@ -6,11 +6,11 @@ export default function FoodCard({ food }) {
     router.push(`food/${food.id}`);
   };
   return (
-    <li>
-      <img src={food.imageUrl} alt="" />
-      <h1>{food.name}</h1>
+    <li className="flex flex-col items-center p-3 border rounded-md border-slate-400 bg-slate-100">
+      <img className="w-[300px] h-[200px]" src={food.imageUrl} alt="" />
+      <h1 className="py-2 text-xl font-semibold">{food.name}</h1>
       <button
-        className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
+        className="px-3 py-1 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
         onClick={cardOnClick}
       >
         View Details

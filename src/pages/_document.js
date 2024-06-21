@@ -1,4 +1,4 @@
-import BaseLayouts from "@/layouts/BaseLayouts";
+import BaseLayouts from "@/layouts/BaseLayout";
 import { Html, Head, Main, NextScript } from "next/document";
 
 export default function Document() {

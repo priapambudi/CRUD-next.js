@@ -1,7 +1,8 @@
 import axios from "axios";
 import FoodDetail from "@/components/FoodDetail";
 import FoodForm from "@/components/FoodForm";
-import BaseLayouts from "@/layouts/BaseLayouts";
+import Navbar from "@/components/Navbar";
+// import BaseLayout from "@/layouts/BaseLayout";
 
 export async function getServerSideProps(context) {
   const resp = await axios.get(
@@ -21,11 +22,12 @@ export async function getServerSideProps(context) {
 
 export default function FoodDetailPage({ food }) {
   return (
-    <BaseLayouts>
-      <div>
+    <>
+      <Navbar />
+      <div className="flex flex-row items-center justify-center">
         <FoodDetail food={food} />
         <FoodForm defaultFormData={food} isEdit={true} />
       </div>
-    </BaseLayouts>
+    </>
   );
 }
